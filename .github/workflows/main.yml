@@ -23,8 +23,8 @@ jobs:
 
       - name: Commit build_info.txt
         run: |
-          git config user.name "CI Bot"
-          git config user.email "ci@example.com"
+          git config user.name "dikosha-svgh"
+          git config user.email "alish.di@mail.ru"
           git add build_info.txt
           git commit -m "Автоматты түрде build_info.txt жаңартылды" || echo "No changes to commit"
           git push
