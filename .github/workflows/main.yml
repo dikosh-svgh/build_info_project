@@ -1,0 +1,30 @@
+name: Update Build Info
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build_info:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Set up Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.11'
+
+      - name: Run build_info script
+        run: python build_info.py
+
+      - name: Commit build_info.txt
+        run: |
+          git config user.name "CI Bot"
+          git config user.email "ci@example.com"
+          git add build_info.txt
+          git commit -m "Автоматты түрде build_info.txt жаңартылды" || echo "No changes to commit"
+          git push
